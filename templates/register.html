@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Microsoft YaHei", sans-serif;
+            background: #f0f2f5;
+        }
+        .box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+            min-width: 320px;
+        }
+        .box h2 { margin-bottom: 24px; color: #333; }
+        .box p { margin-bottom: 16px; font-size: 15px; color: #555; }
+        .box input {
+            width: 180px; padding: 6px 10px;
+            border: 1px solid #ccc; border-radius: 6px; font-size: 14px;
+        }
+        .box button {
+            margin-top: 8px; padding: 8px 32px;
+            border: none; border-radius: 6px;
+            background: #4a90d9; color: #fff; font-size: 15px; cursor: pointer;
+        }
+        .box button:hover { background: #357abd; }
+        .box .link {
+            display: inline-block; margin-top: 16px;
+            color: #4a90d9; text-decoration: none; font-size: 14px;
+        }
+        .box .link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>注册新用户</h2>
+        {% if errors %}
+        <div style="color:red; font-size:14px; margin-bottom:16px; text-align:left; display:inline-block;">
+            {% for e in errors %}<p style="color:red; margin-bottom:4px;">· {{ e }}</p>{% endfor %}
+        </div>
+        {% endif %}
+        <form method="post">
+            <p>用户名：<input name="username" value="{{ username or '' }}"></p>
+            <p>密码：<input type="password" name="password"></p>
+            <p>确认密码：<input type="password" name="confirm"></p>
+            <button type="submit">注册</button>
+        </form>
+        <a class="link" href="/">← 返回登录</a>
+    </div>
+</body>
+</html>

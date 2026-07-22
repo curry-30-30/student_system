@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Microsoft YaHei", sans-serif;
+            background: #f0f2f5;
+        }
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+            min-width: 350px;
+            position: relative;
+        }
+        a.back-btn {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            padding: 6px 14px;
+            background: #6c757d;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+        a.back-btn:hover { background: #5a6268; }
+        h2 { margin-bottom: 24px; color: #333; }
+        table { border-collapse: collapse; margin: 0 auto; width: 100%; }
+        th, td { padding: 8px 16px; border: 1px solid #d0d0d0; font-size: 14px; }
+        th { background: #f5f7fa; color: #555; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a class="back-btn" href="/student_list">← 返回</a>
+        <h2>所有用户</h2>
+        <table>
+            <tr>
+                <th>序号</th>
+                <th>用户名</th>
+                <th>密码</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ user[1] }}</td>
+                <td>{{ user[2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
