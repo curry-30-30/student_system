@@ -16,7 +16,7 @@
         }
         .container {
             background: #fff;
-            padding: 32px 40px;
+            padding: 60px 40px 32px;
             border-radius: 12px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
             text-align: center;
@@ -36,22 +36,36 @@
         a.back-btn:hover {
             background: #5a6268;
         }
+        .top-actions {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            display: flex;
+            gap: 8px;
+        }
+        a.action-btn {
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 6px;
+            font-size: 13px;
+            text-decoration: none;
+            color: #fff;
+        }
         h2 {
             margin-bottom: 20px;
             color: #333;
         }
         a.add-btn {
-            display: inline-block;
-            margin-bottom: 16px;
-            padding: 6px 20px;
             background: #4a90d9;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 14px;
         }
         a.add-btn:hover {
             background: #357abd;
+        }
+        a.delete-all-btn {
+            background: #e74c3c;
+        }
+        a.delete-all-btn:hover {
+            background: #c0392b;
         }
         table {
             border-collapse: collapse;
@@ -107,8 +121,9 @@
     <div class="container">
         <a class="back-btn" href="/">← 返回登录</a>
         <h2>学生信息管理</h2>
-        <div style="margin-bottom:16px;">
-            <a class="add-btn" href="/add">新增学生</a>
+        <div class="top-actions">
+            <a class="action-btn add-btn" href="/add">新增学生</a>
+            <a class="action-btn delete-all-btn" href="/delete_all" onclick="return confirm('确定要删除全部学生吗？此操作不可恢复。')">删除全部</a>
         </div>
         <table>
             <tr>

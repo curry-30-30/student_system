@@ -85,6 +85,17 @@ def delete(sid):
     flash("删除成功！")
     return redirect("/student_list")
 
+# 删除全部学生
+@app.route("/delete_all")
+def delete_all():
+    conn = sqlite3.connect("student.db")
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM student")
+    conn.commit()
+    conn.close()
+    flash("已删除全部学生！")
+    return redirect("/student_list")
+
 # 程序启动入口
 if __name__ == "__main__":
     app.run(debug=True)
