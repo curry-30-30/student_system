@@ -29,6 +29,7 @@ def login():
         password = request.form["password"]
         if username == "admin" and password == "123456":
             return redirect("/student_list")
+        return render_template("login.html", error="账号或密码错误")
     return render_template("login.html")
 
 # 学生列表页面

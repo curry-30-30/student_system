@@ -20,6 +20,21 @@
             border-radius: 12px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
             text-align: center;
+            position: relative;
+        }
+        a.back-btn {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            padding: 6px 14px;
+            background: #6c757d;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+        a.back-btn:hover {
+            background: #5a6268;
         }
         h2 {
             margin-bottom: 20px;
@@ -62,8 +77,11 @@
 </head>
 <body>
     <div class="container">
+        <a class="back-btn" href="/">← 返回登录</a>
         <h2>学生信息管理</h2>
-        <a class="add-btn" href="/add">新增学生</a>
+        <div style="margin-bottom:16px;">
+            <a class="add-btn" href="/add">新增学生</a>
+        </div>
         <table>
             <tr>
                 <th>序号</th>
