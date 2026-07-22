@@ -73,9 +73,37 @@
         a.delete-link:hover {
             text-decoration: underline;
         }
+        /* Flash 消息 */
+        .flash-msg {
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #27ae60;
+            color: #fff;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-size: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 999;
+            animation: fadeInOut 2.5s ease forwards;
+        }
+        @keyframes fadeInOut {
+            0%   { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+            15%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+            70%  { opacity: 1; }
+            100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+        }
     </style>
 </head>
 <body>
+    {% with msgs = get_flashed_messages() %}
+    {% if msgs %}
+    {% for msg in msgs %}
+    <div class="flash-msg">{{ msg }}</div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
     <div class="container">
         <a class="back-btn" href="/">← 返回登录</a>
         <h2>学生信息管理</h2>

@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 import sqlite3
 
 app = Flask(__name__)
+app.secret_key = "student_system_secret"
 
 # 初始化数据库，创建学生表
 def create_db():
@@ -65,6 +66,7 @@ def add():
             cursor.execute("INSERT INTO student(name,student_id,age,clazz) VALUES (?,?,?,?)", (name, sid, age, clazz))
             conn.commit()
             conn.close()
+            flash("保存成功！")
             return redirect("/student_list")
 
         # 验证失败时返回表单，保留已填内容
@@ -80,6 +82,7 @@ def delete(sid):
     cursor.execute("DELETE FROM student WHERE id=?", (sid,))
     conn.commit()
     conn.close()
+    flash("删除成功！")
     return redirect("/student_list")
 
 # 程序启动入口
