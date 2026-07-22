@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Microsoft YaHei", sans-serif;
+            background: #f0f2f5;
+        }
+        .login-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+            min-width: 320px;
+        }
+        .login-box h2 {
+            margin-bottom: 24px;
+            color: #333;
+        }
+        .login-box p {
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: #555;
+        }
+        .login-box input {
+            width: 180px;
+            padding: 6px 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .login-box button {
+            margin-top: 8px;
+            padding: 8px 32px;
+            border: none;
+            border-radius: 6px;
+            background: #4a90d9;
+            color: #fff;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .login-box button:hover {
+            background: #357abd;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2>学生管理系统登录</h2>
+        <form method="post">
+            <p>账号：<input type="text" name="username"></p>
+            <p>密码：<input type="password" name="password"></p>
+            <button type="submit">登录</button>
+        </form>
+    </div>
+</body>
+</html>

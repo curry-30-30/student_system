@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>新增学生</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Microsoft YaHei", sans-serif;
+            background: #f0f2f5;
+        }
+        .form-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+            min-width: 320px;
+        }
+        h3 {
+            margin-bottom: 24px;
+            color: #333;
+        }
+        .form-box p {
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: #555;
+        }
+        .form-box input {
+            width: 180px;
+            padding: 6px 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .form-box button {
+            margin-top: 8px;
+            padding: 8px 24px;
+            border: none;
+            border-radius: 6px;
+            background: #4a90d9;
+            color: #fff;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .form-box button:hover {
+            background: #357abd;
+        }
+        .form-box a {
+            display: inline-block;
+            margin-top: 16px;
+            color: #4a90d9;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .form-box a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-box">
+        <h3>添加学生信息</h3>
+        <form method="post">
+            <p>姓名：<input name="name"></p>
+            <p>学号：<input name="sid"></p>
+            <p>年龄：<input name="age"></p>
+            <p>班级：<input name="clazz"></p>
+            <button type="submit">提交保存</button>
+        </form>
+        <br>
+        <a href="/student_list">返回列表</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+*.db
+__pycache__/
+*.log
+.venv/
+.vscode/
+reasonix.toml
+.reasonix/

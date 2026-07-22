@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>学生列表</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: "Microsoft YaHei", sans-serif;
+            background: #f0f2f5;
+        }
+        .container {
+            background: #fff;
+            padding: 32px 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        a.add-btn {
+            display: inline-block;
+            margin-bottom: 16px;
+            padding: 6px 20px;
+            background: #4a90d9;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        a.add-btn:hover {
+            background: #357abd;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        th, td {
+            padding: 8px 16px;
+            border: 1px solid #d0d0d0;
+            font-size: 14px;
+        }
+        th {
+            background: #f5f7fa;
+            color: #555;
+        }
+        a.delete-link {
+            color: #e74c3c;
+            text-decoration: none;
+        }
+        a.delete-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>学生信息管理</h2>
+        <a class="add-btn" href="/add">新增学生</a>
+        <table>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>学号</th>
+                <th>年龄</th>
+                <th>班级</th>
+                <th>操作</th>
+            </tr>
+            {% for item in data %}
+            <tr>
+                <td>{{ item[0] }}</td>
+                <td>{{ item[1] }}</td>
+                <td>{{ item[2] }}</td>
+                <td>{{ item[3] }}</td>
+                <td>{{ item[4] }}</td>
+                <td><a class="delete-link" href="/delete/{{ item[0] }}">删除</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
