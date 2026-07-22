@@ -65,8 +65,12 @@
 <body>
     <div class="form-box">
         <h3>添加学生信息</h3>
-        {% if error %}
-        <p style="color:#e74c3c; font-size:14px; margin-bottom:16px;">{{ error }}</p>
+        {% if errors %}
+        <div style="font-size:14px; margin-bottom:16px; text-align:left; display:inline-block;">
+            {% for e in errors %}
+            <p style="color:red; margin-bottom:4px;">· {{ e }}</p>
+            {% endfor %}
+        </div>
         {% endif %}
         <form method="post">
             <p>姓名：<input name="name" value="{{ name or '' }}"></p>
