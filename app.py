@@ -88,7 +88,6 @@ def register():
 @app.route("/change_password", methods=["GET", "POST"])
 def change_password():
     errors = []
-    success = None
     if request.method == "POST":
         username = request.form["username"].strip()
         old_pw = request.form["old_password"].strip()
@@ -108,16 +107,48 @@ def change_password():
             if cursor.fetchone():
                 cursor.execute("UPDATE user SET password=? WHERE username=?", (new_pw, username))
                 conn.commit()
-                success = "密码修改成功，请重新登录"
+                conn.close()
+                flash("密码修改成功，请重新登录")
+                return redirect("/")
             else:
                 errors.append("用户名或原密码错误")
             conn.close()
 
-        if success:
-            return render_template("change_password.html", success=success, username=username)
         return render_template("change_password.html", errors=errors, username=username)
 
     return render_template("change_password.html")
+
+# 更改用户名
+@app.route("/change_username", methods=["GET", "POST"])
+def change_username():
+    errors = []
+    if request.method == "POST":
+        username = request.form["username"].strip()
+        password = request.form["password"].strip()
+        new_username = request.form["new_username"].strip()
+
+        if not username or not password or not new_username:
+            errors.append("请填写完整信息")
+        else:
+            conn = sqlite3.connect("student.db")
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM user WHERE username=? AND password=?", (username, password))
+            if cursor.fetchone():
+                try:
+                    cursor.execute("UPDATE user SET username=? WHERE username=?", (new_username, username))
+                    conn.commit()
+                    conn.close()
+                    flash("用户名修改成功，请重新登录")
+                    return redirect("/")
+                except sqlite3.IntegrityError:
+                    errors.append("新用户名已存在")
+            else:
+                errors.append("用户名或密码错误")
+            conn.close()
+
+        return render_template("change_username.html", errors=errors, username=username)
+
+    return render_template("change_username.html")
 
 # 用户列表
 @app.route("/user_list")

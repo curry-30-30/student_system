@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>修改密码</title>
+    <title>更改用户名</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -28,7 +28,7 @@
             border: 1px solid #ccc; border-radius: 6px; font-size: 14px;
         }
         .box button {
-            margin-top: 8px; padding: 8px 32px;
+            margin-top: 8px; padding: 8px 24px;
             border: none; border-radius: 6px;
             background: #4a90d9; color: #fff; font-size: 15px; cursor: pointer;
         }
@@ -38,22 +38,20 @@
             color: #4a90d9; text-decoration: none; font-size: 14px;
         }
         .box .link:hover { text-decoration: underline; }
-        .success { color: #27ae60; font-size: 14px; margin-bottom: 16px; }
     </style>
 </head>
 <body>
     <div class="box">
-        <h2>修改密码</h2>
+        <h2>更改用户名</h2>
         {% if errors %}
         <div style="color:red; font-size:14px; margin-bottom:16px; text-align:left; display:inline-block;">
             {% for e in errors %}<p style="color:red; margin-bottom:4px;">· {{ e }}</p>{% endfor %}
         </div>
         {% endif %}
         <form method="post">
-            <p>用户名：<input name="username" value="{{ username or '' }}"></p>
-            <p>原密码：<input type="password" name="old_password"></p>
-            <p>新密码：<input type="password" name="new_password"></p>
-            <p>确认新密码：<input type="password" name="confirm"></p>
+            <p>原用户名：<input name="username" value="{{ username or '' }}"></p>
+            <p>密码：<input type="password" name="password"></p>
+            <p>新用户名：<input name="new_username"></p>
             <button type="submit">确认修改</button>
         </form>
         <a class="link" href="/">← 返回登录</a>
