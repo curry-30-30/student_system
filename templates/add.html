@@ -65,11 +65,14 @@
 <body>
     <div class="form-box">
         <h3>添加学生信息</h3>
+        {% if error %}
+        <p style="color:#e74c3c; font-size:14px; margin-bottom:16px;">{{ error }}</p>
+        {% endif %}
         <form method="post">
-            <p>姓名：<input name="name"></p>
-            <p>学号：<input name="sid"></p>
-            <p>年龄：<input name="age"></p>
-            <p>班级：<input name="clazz"></p>
+            <p>姓名：<input name="name" value="{{ name or '' }}"></p>
+            <p>学号：<input name="sid" value="{{ sid or '' }}"></p>
+            <p>年龄：<input name="age" value="{{ age or '' }}"></p>
+            <p>班级：<input name="clazz" value="{{ clazz or '' }}"></p>
             <button type="submit">提交保存</button>
         </form>
         <br>

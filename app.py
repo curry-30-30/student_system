@@ -44,17 +44,31 @@ def student_list():
 # 新增学生
 @app.route("/add", methods=["GET", "POST"])
 def add():
+    error = None
     if request.method == "POST":
-        name = request.form["name"]
-        sid = request.form["sid"]
-        age = request.form["age"]
-        clazz = request.form["clazz"]
-        conn = sqlite3.connect("student.db")
-        cursor = conn.cursor()
-        cursor.execute("INSERT INTO student(name,student_id,age,clazz) VALUES (?,?,?,?)",(name,sid,age,clazz))
-        conn.commit()
-        conn.close()
-        return redirect("/student_list")
+        name = request.form["name"].strip()
+        sid = request.form["sid"].strip()
+        age = request.form["age"].strip()
+        clazz = request.form["clazz"].strip()
+
+        # 验证
+        if any(c.isdigit() for c in name):
+            error = "姓名不能包含数字"
+        elif not sid.isdigit():
+            error = "学号只能输入数字"
+        elif not age.isdigit():
+            error = "年龄只能输入数字"
+        else:
+            conn = sqlite3.connect("student.db")
+            cursor = conn.cursor()
+            cursor.execute("INSERT INTO student(name,student_id,age,clazz) VALUES (?,?,?,?)", (name, sid, age, clazz))
+            conn.commit()
+            conn.close()
+            return redirect("/student_list")
+
+        # 验证失败时返回表单，保留已填内容
+        return render_template("add.html", error=error, name=name, sid=sid, age=age, clazz=clazz)
+
     return render_template("add.html")
 
 # 删除学生
